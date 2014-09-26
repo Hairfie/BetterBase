@@ -1,0 +1,15 @@
+{
+    "name": "Antoine/better-base",
+    "require": {
+        "ext-mongo": "*",
+        "willdurand/geocoder": "*",
+        "kriswallsmith/buzz": "*",
+        "symfony/console": "~2.5"
+    },
+    "authors": [
+        {
+            "name": "Antoine Hérault",
+            "email": "antoine.herault@gmail.com"
+        }
+    ]
+}
