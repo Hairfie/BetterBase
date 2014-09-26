@@ -7,7 +7,7 @@ $httpAdapter = new Geocoder\HttpAdapter\BuzzHttpAdapter;
 $providers = [
     'yandex'        => new Geocoder\Provider\YandexProvider($httpAdapter),
     'tomTom'        => new Geocoder\Provider\TomTomProvider($httpAdapter, 'wxu2jtphawhmqpmqbhb999ur'),
-    'openStreetMap' => new Geocoder\Provider\OpenStreetMapAdapter($httpAdapter),
+    'openStreetMap' => new Geocoder\Provider\OpenStreetMapProvider($httpAdapter),
 ];
 
 
