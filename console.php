@@ -51,7 +51,9 @@ $app
                         $dataKey => array_filter($result->toArray(), 'notNull'),
                     ]
                 ]);
-            } catch (Geocoder\Exception\NoResultException $e) {}
+            } catch (Geocoder\Exception\NoResultException $e) {
+                $output->writeln($e->getMessage());
+            }
 
             $progress->advance();
         }
