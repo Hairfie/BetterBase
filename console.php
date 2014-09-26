@@ -46,15 +46,12 @@ $app
 
             try {
                 $result = $geocoder->geocode($address);
-            } catch (Geocoder\Exception\NoResultException $e) {
-                continue;
-            }
-
-            $db->businesses->update(['_id' => $business['_id']], [
-                '$set' => [
-                    $dataKey => array_filter($result->toArray(), 'notNull'),
-                ]
-            ]);
+                $db->businesses->update(['_id' => $business['_id']], [
+                    '$set' => [
+                        $dataKey => array_filter($result->toArray(), 'notNull'),
+                    ]
+                ]);
+            } catch (Geocoder\Exception\NoResultException $e) {}
 
             $progress->advance();
         }
