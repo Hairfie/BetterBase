@@ -8,6 +8,7 @@ $providers = [
     'yandex'        => new Geocoder\Provider\YandexProvider($httpAdapter),
     'tomTom'        => new Geocoder\Provider\TomTomProvider($httpAdapter, 'wxu2jtphawhmqpmqbhb999ur'),
     'openStreetMap' => new Geocoder\Provider\OpenStreetMapProvider($httpAdapter),
+    'googleMaps'    => new Geocoder\Provider\GoogleMapsProvider($httpAdapter),
 ];
 
 
@@ -52,10 +53,19 @@ $app
                     ]
                 ]);
             } catch (Geocoder\Exception\NoResultException $e) {
+                $progress->clear();
                 $output->writeln($e->getMessage());
+                $progress->display();
+                $db->businesses->update(['_id' => $business['_id']], [
+                    '$set' => [
+                        $dataKey => ['error' => $e->getMessage()],
+                    ]
+                ]);
             }
 
             $progress->advance();
+
+            usleep(100000); // 1/10s
         }
         $progress->finish();
         $output->writeln('');
