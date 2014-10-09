@@ -13,7 +13,7 @@ $providers = [
 
 
 $mongo = new MongoClient('dev.hairfie.com');
-$db = $mongo->selectDB('hairfie-staging');
+$db = $mongo->selectDB('hairfie-production');
 
 $app = new Symfony\Component\Console\Application;
 $app
