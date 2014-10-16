@@ -1,2 +1,4 @@
 vendor/*
 composer.phar
+duplicates.json
+*.php.cache
